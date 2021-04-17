@@ -25,6 +25,9 @@
 #from google.cloud import language
 from google.cloud import language_v1
 #from google.cloud import texttospeech
+import os
+
+GOOGLE_APPLICATION_CREDENTIALS = os.path.abspath("bitberg-bot-c4fd2dc89602.json")
 
 def sample_analyze_sentiment(text_content):
     """
