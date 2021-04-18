@@ -32,7 +32,7 @@ class User:
     return connection
 
 
-  def __create_db_connection(host_name, user_name, user_password, db_name):
+  def __create_db_connection(self, host_name, user_name, user_password, db_name):
     connection = None
     try:
         connection = mysql.connector.connect(
@@ -48,7 +48,7 @@ class User:
     return connection
 
 
-  def execute_query(connection, query):
+  def execute_query(self, connection, query):
     cursor = connection.cursor()
     try:
         cursor.execute(query)
@@ -70,7 +70,7 @@ class User:
 
 
   def __extractData(self, username) -> tuple:
-    connection    = self.__create_db_connection("localhost", "root", "kmelvin562!", "user_states")
+    connection    = self.__create_db_connection("localhost", "root", "pw", "user_states")
 		
 		# returns a tuple of size 1 with member 1 or 0
 		# 1 = user exists in DB , 0 = user DNE in DB
