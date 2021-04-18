@@ -1,8 +1,13 @@
-import dialogflow
 import pyglet
+import argparse
+import uuid
+
+from google.cloud.dialogflowcx_v3beta1.services.agents import AgentsClient
+from google.cloud.dialogflowcx_v3beta1.services.sessions import SessionsClient
+from google.cloud.dialogflowcx_v3beta1.types import session
 from sentiment import analyze_sentiment, find_emotion_gif
 from google.api_core.exceptions import InvalidArgument
-#import google.cloud.dialogflowcx_v3
+import google.cloud.dialogflowcx_v3
 
 # DIALOGFLOW_PROJECT_ID = 'bitberg-bot'
 language_code = 'en-us'
@@ -11,8 +16,8 @@ location_id = "us-central1"
 project_id = "bitberg-bot"
 agent_id = "ae6e9b73-bbeb-44cd-88f3-60abd02d8cdc"
 agent = f"projects/{project_id}/locations/{location_id}/agents/{agent_id}"
-session_client = dialogflow.SessionClient()
-session = session_client.session_path(project_id, session_id)
+session_client = SessionsClient()
+#session = session_client.session_path(project_id, session_id)
 
 def display_gif(gif_file):
   ag_file = gif_file
@@ -62,13 +67,13 @@ def detect_intent(user): #, agent, session_id, language_code
     session_path = f"{agent}/sessions/{session_id}"
     print(f"Session path: {session_path}\n")
     client_options = None
-    agent_components = dialogflow.AgentsClient.parse_agent_path(agent)
+    agent_components = AgentsClient.parse_agent_path(agent)
     location_id = agent_components["location"]
     if location_id != "global":
         api_endpoint = f"{location_id}-dialogflow.googleapis.com:443"
         print(f"API Endpoint: {api_endpoint}\n")
         client_options = {"api_endpoint": api_endpoint}
-    session_client = dialogflow.SessionsClient(client_options=client_options)
+    session_client = SessionsClient(client_options=client_options)
 
     input_string = input("Enter your prompt for bitberg")
     while(input_string != 'close'):

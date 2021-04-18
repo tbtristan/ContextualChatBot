@@ -30,5 +30,6 @@ from dialogflow import detect_intent
     
 if __name__ == '__main__':
     test1 = User("nobody knows it")
+    print("TEST")
     detect_intent(test1)
     test1.close()
