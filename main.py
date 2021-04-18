@@ -39,8 +39,8 @@ if __name__ == '__main__':
 		print('We have logged in as {0.user}'.format(client))
 
 	@client.event
-	async def on_message(self, message):
-		if(message.author != self.user):
+	async def on_message(message):
+		if(client.user.mentioned_in(message)):
 			print(message.content)
 			print(message.author.id)
 			user = message.author.id
