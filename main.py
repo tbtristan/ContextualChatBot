@@ -25,6 +25,8 @@
 from google.cloud import language_v1
 #from google.cloud import
 
+from user.py import User
+
 OVERALL_SENTIMENT = 0
 DOCUMENT_GLOBAL = ""
 DOCUMENT_COUNTER = 0
@@ -102,19 +104,4 @@ def updateGlobalSentiment(sentiment_score):
     print("Overall Sentiment: {}".format(OVERALL_SENTIMENT))
     
 if __name__ == '__main__':
-
-	# hashing tweets to change appearance? 
-    import hashlib
-
-	# take a Tweet contents string as
-	# input and sha256 it. bits of 256 will be used to color and modify sprite
-	# example : 
-
-    str = "This is an example"
-    result = hashlib.sha256(str.encode())
-    print('\r',result.hexdigest())
-
-    user_text = input("Enter text to be analyzed: ")
-    while (user_text.lower() != ""):
-        analyze_sentiment(user_text)
-        user_text = input("Enter text to be analyzed: ")  
+  test = User('rawbarobx')
