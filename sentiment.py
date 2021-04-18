@@ -25,3 +25,6 @@ def updateGlobalSentiment(user, sentiment_score):
     DOCUMENT_COUNTER = DOCUMENT_COUNTER + 1
     OVERALL_SENTIMENT = (((DOCUMENT_COUNTER - 1) * OVERALL_SENTIMENT) + sentiment_score)/DOCUMENT_COUNTER
     print("Overall Sentiment: {}".format(OVERALL_SENTIMENT))
+
+    user.interactions_counter = DOCUMENT_COUNTER
+    user.persistent_sentiment = OVERALL_SENTIMENT
