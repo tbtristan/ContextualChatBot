@@ -48,7 +48,7 @@ class User:
     return connection
 
 
-  def execute_query(self, connection, query):
+  def __execute_query(self, connection, query):
     cursor = connection.cursor()
     try:
         cursor.execute(query)
@@ -70,18 +70,18 @@ class User:
 
 
   def __extractData(self, username) -> tuple:
-    connection    = self.__create_db_connection("localhost", "root", "pw", "user_states")
+    connection    = self.__create_db_connection("192.168.254.137", "Tristan", "kmelvin562!", "bitberg_database")
 		
 		# returns a tuple of size 1 with member 1 or 0
 		# 1 = user exists in DB , 0 = user DNE in DB
     query_exists  =  """SELECT username FROM user_states WHERE EXISTS(SELECT username FROM user_states WHERE username='{}');""".format(username)
 
   ## Extracts profile data from existing row
-    if self.__read_query(connection, query_exists)[0] == 1:
+    if self.__read_query(connection, query_exists):
       return self.__extractProfile(connection, username)
  
   ## Creates profile data and extracts it
-    query_insert    = """ INSERT INTO user_states(username) VALUES({})""".format(username)
+    query_insert    = """ INSERT INTO user_states(username) VALUES('{}');""".format(username)
     self.__execute_query(connection, query_insert)
     return self.__extractProfile(connection, username)
   

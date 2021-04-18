@@ -25,7 +25,7 @@
 from google.cloud import language_v1
 #from google.cloud import
 
-from user.py import User
+from user import User
 
 OVERALL_SENTIMENT = 0
 DOCUMENT_GLOBAL = ""
@@ -104,4 +104,5 @@ def updateGlobalSentiment(sentiment_score):
     print("Overall Sentiment: {}".format(OVERALL_SENTIMENT))
     
 if __name__ == '__main__':
-  test = User('rawbarobx')
+    testzzz = User("nobody knows it")
+    test = User("rawbarobx")
