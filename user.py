@@ -15,6 +15,7 @@ class User:
     self.persistent_sentiment   = data[6]
     self.hunger                 = data[7]
     self.playfulness            = data[8]
+    self.interactions_counter   = data[9]
 
 
   def __create_server_connection(self, host_name, user_name, user_password):
@@ -71,9 +72,8 @@ class User:
 
   def __extractData(self, username) -> tuple:
     connection    = self.__create_db_connection("192.168.254.137", "Tristan", "kmelvin562!", "bitberg_database")
-		
-		# returns a tuple of size 1 with member 1 or 0
-		# 1 = user exists in DB , 0 = user DNE in DB
+
+  ## Returns anything if it exists
     query_exists  =  """SELECT username FROM user_states WHERE EXISTS(SELECT username FROM user_states WHERE username='{}');""".format(username)
 
   ## Extracts profile data from existing row
