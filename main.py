@@ -43,7 +43,7 @@ if __name__ == '__main__':
 		if(client.user.mentioned_in(message)):
 			print(message.content)
 			print(message.author.id)
-			user = message.author.id
+			user = ''+message.author.id
 			poten_new_user = User(user)
 			temp_tuple = discord_response(user, message.content)
 			await message.channel.send(temp_tuple[1], file=discord.File(temp_tuple[0]))
