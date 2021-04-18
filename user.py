@@ -93,11 +93,11 @@ class User:
     return results[0]
 
 
-  def __close(self):
+  def close(self):
     connection    = self.__create_db_connection("192.168.254.137", "Tristan", "kmelvin562!", "bitberg_database")
 
-    query_update = """UPDATE user_states SET evolution = {}, last_interaction = CURR_DATE, fav_food = '{}', hated_food = '{}', persistent_sentiment = {}, hunger = {}, playfulness = {}, interactions_counter = {}  WHERE username = '{}'""".format(self.evolution, self.fav_food, self.hated_food, self.persistent_sentiment, self.hunger, self.playfulness, self.interactions_counter, self.username)
+    query_update = """UPDATE user_states SET evolution = {}, last_interaction = CURRENT_DATE, fav_food = '{}', hated_food = '{}', persistent_sentiment = {}, hunger = {}, playfulness = {}, interactions_counter = {}  WHERE username = '{}'""".format(self.evolution, self.fav_food, self.hated_food, self.persistent_sentiment, self.hunger, self.playfulness, self.interactions_counter, self.username)
 
     self.__execute_query(connection, query_update)
 
-    self.__extractProfile(self, connection, self.username)
+    self.__extractProfile(connection, self.username)
