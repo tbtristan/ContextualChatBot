@@ -28,7 +28,7 @@ import discord
 # import os
 
 client = discord.Client()
-TOKEN = "BOT TOKE GOES HERE"
+TOKEN = "BOT TOKEN GOES HERE"
 
 from user import User
 from dialogflow import discord_response
