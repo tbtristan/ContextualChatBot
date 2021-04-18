@@ -14,7 +14,7 @@ language_code = 'en-us'
 session_id = "something-here"
 location_id = "us-central1"
 project_id = "bitberg-bot"
-agent_id = "ae6e9b73-bbeb-44cd-88f3-60abd02d8cdc"
+agent_id = "agent id goes here"
 agent = f"projects/{project_id}/locations/{location_id}/agents/{agent_id}"
 
 def display_gif(gif_file):
