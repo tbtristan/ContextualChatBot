@@ -71,7 +71,7 @@ class User:
 
 
   def __extractData(self, username) -> tuple:
-    connection    = self.__create_db_connection("192.168.254.137", "Tristan", "kmelvin562!", "bitberg_database")
+    connection    = self.__create_db_connection("hostname", "username", "pw", "bitberg_database")
 
   ## Returns anything if it exists
     query_exists  =  """SELECT username FROM user_states WHERE EXISTS(SELECT username FROM user_states WHERE username='{}');""".format(username)
@@ -94,7 +94,7 @@ class User:
 
 
   def close(self):
-    connection    = self.__create_db_connection("192.168.254.137", "Tristan", "kmelvin562!", "bitberg_database")
+    connection    = self.__create_db_connection("hostname", "username", "pw", "bitberg_database")
 
     query_update = """UPDATE user_states SET evolution = {}, last_interaction = CURRENT_DATE, fav_food = '{}', hated_food = '{}', persistent_sentiment = {}, hunger = {}, playfulness = {}, interactions_counter = {}  WHERE username = '{}'""".format(self.evolution, self.fav_food, self.hated_food, self.persistent_sentiment, self.hunger, self.playfulness, self.interactions_counter, self.username)
 
