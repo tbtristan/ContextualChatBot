@@ -12,7 +12,7 @@ CREATE TABLE user_states(
     hunger DOUBLE NOT NULL DEFAULT 0.0, -- scale [0, 1] of hunger. 1 is most hungry. 0 is just fed
     playfulness DOUBLE NOT NULL DEFAULT 0.5, -- how much the bot wants the user to interact with it 
     
-    CONSTRAINT user_states_pk PRIMARY KEY (username), -- twitter @s are all unique. sufficient PK. surrogate not chosen as only single table in database ; repitition not an issue
+    CONSTRAINT user_states_pk PRIMARY KEY (username), -- twitter @s are all unique. sufficient PK. surrogate not chosen as only single table in database ; repetition not an issue
     CONSTRAINT CHECK 0.0 <= hunger AND hunger <= 1.0, -- enforce range
     CONSTRAINT CHECK 0.0 <= playfulness AND playfulness <= 1.0, -- enforce range
     CONSTRAINT CHECK 0.0 <= persistent_sentiment AND persistent_sentiment <= 1.0, -- enforce range
