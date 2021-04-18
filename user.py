@@ -99,3 +99,5 @@ class User:
     query_update = """UPDATE user_states SET evolution = {}, last_interaction = CURR_DATE, fav_food = '{}', hated_food = '{}', persistent_sentiment = {}, hunger = {}, playfulness = {}, interactions_counter = {}  WHERE username = '{}'""".format(self.evolution, self.fav_food, self.hated_food, self.persistent_sentiment, self.hunger, self.playfulness, self.interactions_counter, self.username)
 
     self.__execute_query(connection, query_update)
+
+    self.__extractProfile(self, connection, self.username)
