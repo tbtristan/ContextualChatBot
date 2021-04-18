@@ -45,7 +45,7 @@ if __name__ == '__main__':
 			print(message.author.id)
 			user = message.author.id
 			poten_new_user = User(user)
-			temp_tuple = discord_response(user, message)
+			temp_tuple = discord_response(user, message.content)
 			await message.channel.send(temp_tuple[1], file=discord.File(temp_tuple[0]))
 			poten_new_user.close()
 	client.run(TOKEN)

@@ -2,6 +2,7 @@
 import pyglet
 import argparse
 import uuid
+import os
 
 from google.cloud.dialogflowcx_v3beta1.services.agents import AgentsClient
 from google.cloud.dialogflowcx_v3beta1.services.sessions import SessionsClient
@@ -72,10 +73,10 @@ def discord_response(user, message_contents):
         client_options = {"api_endpoint": api_endpoint}
     session_client = SessionsClient(client_options=client_options)
 
-    input_string = message_contents
-    image_float = analyze_sentiment(user, input_string)
-    text_input = session.TextInput(text=input_string)
-    query_input = session.QueryInput(text=text_input, language_code=language_code)
+    input_string  = message_contents
+    image_float   = analyze_sentiment(user, input_string)
+    text_input    = session.TextInput(text=input_string)
+    query_input   = session.QueryInput(text=text_input, language_code=language_code)
     request = session.DetectIntentRequest(
           session=session_path, query_input=query_input
 		)
