@@ -87,7 +87,7 @@ def discord_response(user, message_contents):
     response_messages = [
       " ".join(msg.text.text) for msg in response.query_result.response_messages
     ]
-    return (os.path.abspath(os.getcwd()) + find_emotion_gif(image_float), f"{' '.join(response_messages)}\n")
+    return (os.getcwd() + find_emotion_gif(image_float), f"{' '.join(response_messages)}\n")
 
 def detect_intent(user): #, agent, session_id, language_code
     """Returns the result of detect intent with texts as inputs.
