@@ -41,7 +41,8 @@ if __name__ == '__main__':
 	@client.event
 	async def mentioned_in(message):
 		if(message.author.bot == False):
-			#content = message.content
+			print(message.content)
+			print(message.authod.id)
 			user = message.author.id
 			poten_new_user = User(user)
 			temp_tuple = discord_response(user, message)
