@@ -49,9 +49,3 @@ if __name__ == '__main__':
 			await message.channel.send(temp_tuple[1], file=discord.File(temp_tuple[0]))
 			poten_new_user.close()
 	client.run(TOKEN)
-
-#     test1 = User("nobody knows it")
-#     print("TEST")
-#     detect_intent(test1)
-#     test1.close()
-# >>>>>>> origin/master
