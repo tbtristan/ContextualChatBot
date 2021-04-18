@@ -1,6 +1,6 @@
 from google.cloud import language_v1
 
-emotion_list = {0 : 'Angry', 1 : 'Upset', 2 : 'Happy'}
+images = {0 : 'dino_angry.gif', 1 : 'dino_sad.gif', 2 : 'dino_bored.gif', 3: 'dino_happy.gif'}
 client = language_v1.LanguageServiceClient()
 
 def analyze_sentiment(user, text):
@@ -28,3 +28,7 @@ def updateGlobalSentiment(user, sentiment_score):
 
     user.interactions_counter = DOCUMENT_COUNTER
     user.persistent_sentiment = OVERALL_SENTIMENT
+
+def display_image(sentiment_score) -> str:
+  sections = len(images)
+  image_display = int( (((sentiment_score + 1)*100)/2) / (100/sections) )

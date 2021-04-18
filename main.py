@@ -27,8 +27,9 @@
 
 from user import User
 from sentiment import analyze_sentiment
+from dialogflow import talkbot
     
 if __name__ == '__main__':
     test1 = User("nobody knows it")
-    analyze_sentiment(test1, "This my beautiful tweet!")
+    talkbot(test1)
     test1.close()
