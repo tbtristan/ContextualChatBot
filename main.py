@@ -39,10 +39,10 @@ if __name__ == '__main__':
 		print('We have logged in as {0.user}'.format(client))
 
 	@client.event
-	async def mentioned_in(message):
-		if(message.author.bot == False):
+	async def on_message(self, message):
+		if(message.author != self.user):
 			print(message.content)
-			print(message.authod.id)
+			print(message.author.id)
 			user = message.author.id
 			poten_new_user = User(user)
 			temp_tuple = discord_response(user, message)
