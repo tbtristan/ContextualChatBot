@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+#import dialogflow
+=======
+>>>>>>> origin/master
 import pyglet
 import argparse
 import uuid
@@ -6,8 +10,16 @@ from google.cloud.dialogflowcx_v3beta1.services.agents import AgentsClient
 from google.cloud.dialogflowcx_v3beta1.services.sessions import SessionsClient
 from google.cloud.dialogflowcx_v3beta1.types import session
 from sentiment import analyze_sentiment, find_emotion_gif
+<<<<<<< HEAD
+#from google.api_core.exceptions import InvalidArgument
+from google.cloud.dialogflowcx_v3beta1.services.agents import AgentsClient
+from google.cloud.dialogflowcx_v3beta1.services.sessions import SessionsClient
+from google.cloud.dialogflowcx_v3beta1.types import session
+import os
+=======
 from google.api_core.exceptions import InvalidArgument
 import google.cloud.dialogflowcx_v3
+>>>>>>> origin/master
 
 language_code = 'en-us'
 session_id = "something-here"
@@ -15,7 +27,10 @@ location_id = "us-central1"
 project_id = "bitberg-bot"
 agent_id = "ae6e9b73-bbeb-44cd-88f3-60abd02d8cdc"
 agent = f"projects/{project_id}/locations/{location_id}/agents/{agent_id}"
+<<<<<<< HEAD
+=======
 session_client = SessionsClient()
+>>>>>>> origin/master
 
 def display_gif(gif_file):
   ag_file = gif_file
@@ -56,6 +71,38 @@ def __display_gif(emotion):
 			sprite.draw()
 
 	pyglet.app.run()
+
+def discord_response(user, message_contents):
+    """Returns the result of detect intent with texts as inputs.
+
+    Using the same `session_id` between requests allows continuation
+    of the conversation."""
+    session_path = f"{agent}/sessions/{session_id}"
+    #print(f"Session path: {session_path}\n")
+    client_options = None
+    agent_components = AgentsClient.parse_agent_path(agent)
+    location_id = agent_components["location"]
+    if location_id != "global":
+        api_endpoint = f"{location_id}-dialogflow.googleapis.com:443"
+        print(f"API Endpoint: {api_endpoint}\n")
+        client_options = {"api_endpoint": api_endpoint}
+    session_client = SessionsClient(client_options=client_options)
+
+    input_string = message_contents
+    image_float = analyze_sentiment(user, input_string)
+    text_input = session.TextInput(text=input_string)
+    query_input = session.QueryInput(text=text_input, language_code=language_code)
+    request = session.DetectIntentRequest(
+          session=session_path, query_input=query_input
+		)
+    response = session_client.detect_intent(request=request)
+
+    #print("=" * 20)
+    #print(f"Query text: {response.query_result.text}")
+    response_messages = [
+      " ".join(msg.text.text) for msg in response.query_result.response_messages
+    ]
+    return (os.path.abspath() + find_emotion_gif(image_float), f"{' '.join(response_messages)}\n")
 
 def detect_intent(user): #, agent, session_id, language_code
     """Returns the result of detect intent with texts as inputs.
@@ -106,5 +153,9 @@ def detect_intent(user): #, agent, session_id, language_code
       " ".join(msg.text.text) for msg in response.query_result.response_messages
       ]
       print(f"Response text: {' '.join(response_messages)}\n")
+<<<<<<< HEAD
+      input_string = input()
+=======
       input_string = input()
 
+>>>>>>> origin/master

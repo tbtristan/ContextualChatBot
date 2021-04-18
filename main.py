@@ -1,13 +1,11 @@
 #################
 # Project Title – BitBerg Bot
 
-# Description   – Twitter bot that simulates conversation 
+# Description   – Twitter (discord) bot that simulates conversation 
 #                 to your tweets		
 # Tools & APIS  – Python (Coding)
 #                 Cloud Natural Language API 
 #                 Dialogflow API
-#                 Text-to-Speech API
-#                 echoAR
 
 # Members       – Tristan Bradfield
 #                 Aidan Gray
@@ -24,12 +22,35 @@
 # from google.cloud import language
 # from google.cloud import language_v1
 # from google.cloud import
+import discord
+# import requests
+# import io
+# import os
+
+client = discord.Client()
+TOKEN = "ODMzMzI2NTU0NDg1NjIwNzU2.YHwt1Q.SqU4Cm5hwvBwY1N92_R5l7iQDCU"
 
 from user import User
-from dialogflow import detect_intent
+from dialogflow import discord_response
     
 if __name__ == '__main__':
-    test1 = User("nobody knows it")
-    print("TEST")
-    detect_intent(test1)
-    test1.close()
+	@client.event
+	async def on_ready():
+		print('We have logged in as {0.user}'.format(client))
+
+	@client.event
+	async def mentioned_in(message):
+		if(message.author.bot == False):
+			#content = message.content
+			user = message.author.id
+			poten_new_user = User(user)
+			temp_tuple = discord_response(user, message)
+			await message.channel.send(temp_tuple[1], file=discord.File(temp_tuple[0]))
+			poten_new_user.close()
+	client.run(TOKEN)
+
+#     test1 = User("nobody knows it")
+#     print("TEST")
+#     detect_intent(test1)
+#     test1.close()
+# >>>>>>> origin/master
