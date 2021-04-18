@@ -1,7 +1,7 @@
 from user import User
 from google.cloud import language_v1
 
-images = {0 : '\dino_angry.gif', 1 : '\dino_sad.gif', 2 : '\dino_bored.gif', 3 : '\dino_confused.gif', 4 : '\dino_blinking.gif', 5: '\dino_happy.gif'}
+images = {0 : '\dino_angry.gif', 1 : '\dino_sad.gif', 2 : '\dino_bored.gif', 3 : '\dino_confused.gif', 4: '\dino_happy.gif'}
 client = language_v1.LanguageServiceClient()
 
 def analyze_sentiment(user, text):
