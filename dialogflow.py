@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-#import dialogflow
-=======
->>>>>>> origin/master
+
 import pyglet
 import argparse
 import uuid
@@ -10,16 +7,7 @@ from google.cloud.dialogflowcx_v3beta1.services.agents import AgentsClient
 from google.cloud.dialogflowcx_v3beta1.services.sessions import SessionsClient
 from google.cloud.dialogflowcx_v3beta1.types import session
 from sentiment import analyze_sentiment, find_emotion_gif
-<<<<<<< HEAD
-#from google.api_core.exceptions import InvalidArgument
-from google.cloud.dialogflowcx_v3beta1.services.agents import AgentsClient
-from google.cloud.dialogflowcx_v3beta1.services.sessions import SessionsClient
-from google.cloud.dialogflowcx_v3beta1.types import session
-import os
-=======
-from google.api_core.exceptions import InvalidArgument
-import google.cloud.dialogflowcx_v3
->>>>>>> origin/master
+
 
 language_code = 'en-us'
 session_id = "something-here"
@@ -27,10 +15,6 @@ location_id = "us-central1"
 project_id = "bitberg-bot"
 agent_id = "ae6e9b73-bbeb-44cd-88f3-60abd02d8cdc"
 agent = f"projects/{project_id}/locations/{location_id}/agents/{agent_id}"
-<<<<<<< HEAD
-=======
-session_client = SessionsClient()
->>>>>>> origin/master
 
 def display_gif(gif_file):
   ag_file = gif_file
@@ -153,9 +137,5 @@ def detect_intent(user): #, agent, session_id, language_code
       " ".join(msg.text.text) for msg in response.query_result.response_messages
       ]
       print(f"Response text: {' '.join(response_messages)}\n")
-<<<<<<< HEAD
-      input_string = input()
-=======
-      input_string = input()
 
->>>>>>> origin/master
+      input_string = input()
