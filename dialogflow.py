@@ -9,7 +9,6 @@ from sentiment import analyze_sentiment, find_emotion_gif
 from google.api_core.exceptions import InvalidArgument
 import google.cloud.dialogflowcx_v3
 
-# DIALOGFLOW_PROJECT_ID = 'bitberg-bot'
 language_code = 'en-us'
 session_id = "something-here"
 location_id = "us-central1"
@@ -17,7 +16,6 @@ project_id = "bitberg-bot"
 agent_id = "ae6e9b73-bbeb-44cd-88f3-60abd02d8cdc"
 agent = f"projects/{project_id}/locations/{location_id}/agents/{agent_id}"
 session_client = SessionsClient()
-#session = session_client.session_path(project_id, session_id)
 
 def display_gif(gif_file):
   ag_file = gif_file
@@ -110,39 +108,3 @@ def detect_intent(user): #, agent, session_id, language_code
       print(f"Response text: {' '.join(response_messages)}\n")
       input_string = input()
 
-''''
-def talkbot (user):
-	input_string = input("Enter your prompt for bitberg")
-	while(input_string != 'close'):
-		text_to_be_analyzed = input_string
-		image_float = analyze_sentiment(user, text_to_be_analyzed)
-		text_input = dialogflow.types.TextInput(text=text_to_be_analyzed,language_code="en-us")
-		query_input = dialogflow.types.QueryInput(text=text_input)
-		try:
-			#display image somehow
-      #
-      #
-      ### display_gif(find_emotion_gif(image_float))
-      #
-      #
-			if  -1.0 < image_float < -0.5:
-				__display_gif('angry')
-				#display angry
-			elif image_float < 0.0:
-				__display_gif('sad')
-				#display sad
-			elif image_float < 0.5:
-				__display_gif('bored')
-				#display bored
-			else:
-				__display_gif('happy')
-				#display happy
-			response = session_client.detect_intent(session=session, query_input=query_input)
-		except InvalidArgument:
-			raise
-		print("Query text:", response.query_result.query_text)
-		print("Detected intent:", response.query_result.intent.display_name)
-		print("Detected intent confidence:", response.query_result.intent_detection_confidence)
-		print("Fulfillment text:", response.query_result.fulfillment_text)
-		input_string = input()
-		'''
