@@ -26,10 +26,9 @@
 # from google.cloud import
 
 from user import User
-from sentiment import analyze_sentiment
-from dialogflow import talkbot
+from dialogflow import detect_intent
     
 if __name__ == '__main__':
     test1 = User("nobody knows it")
-    talkbot(test1)
+    detect_intent(test1)
     test1.close()
