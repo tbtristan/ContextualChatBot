@@ -31,4 +31,4 @@ from sentiment import analyze_sentiment
 if __name__ == '__main__':
     test1 = User("nobody knows it")
     analyze_sentiment(test1, "This my beautiful tweet!")
-    test1.__close
+    test1.close()
