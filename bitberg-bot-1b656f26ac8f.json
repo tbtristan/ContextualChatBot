@@ -1,12 +1,1 @@
-{
-  "type": "service_account",
-  "project_id": "bitberg-bot",
-  "private_key_id": "1b656f26ac8f62fb7f2a9375fdd47e8eb1a90561",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCWgiD39hfGXn1o\nqrqoshmsWl6TReLRplcfP0BGU4nmC7ZudEJy3ONov11x8D9F3SChXgUAsuaDQpM5\naEoLyHIn2ZL61kEk6Fypq7CErNEKmavEl+NHuF+/ToUDX8jnUPLyNBJsZyzmVYn5\nyepm+0J/TxFxK6G7e7fHLVfOJczGGvt9HjJI2VrEAaV2/DY6Kp2EC1Do9utk1aYQ\nWe040vVEE3d5d11vwQzdgOElhjka16M1NUPWh4RBKZD//hazGm6c91IX1AmKzxco\nRVYHZnjNYRsru8sj5+zIayCxvjMOXz761qdaj3Cket/cEaZj7M5PxliKNiRKMkCf\nwRalx0MVAgMBAAECggEABDLOFkysSMbTAGv0IrI71XB8lJF4VyPTk1YRhhoHeJOE\nERxiIXp4R4WVvDtuRcB6NrYnipJIVt9bua1nP2E7OfxaRXAGR4V0gZvTTpLUOVOk\nadVY1uPVm+xl+Sb0tOsvqRelxJYI4nCpatPkm4nPxuW0QAVuZgtN9ZrrXkn0po6y\n1WP3FrrLCmBA2l2aV+VCGBSu4tkM1UpkdQtA1wQZvYQ7dgerIvPMhUQeNSFyPyw5\n4oiR8Q688icweGqhbdMrEqn5cntFK9kk1fuugwiqtYotYiYaki3J0Mf6xvOQfG3A\n7UDxb2sPWEEd5/CYZBeHPs/xrQXnK1daGAUyCRAP0QKBgQDOFpGOC5/oLWOG/TaR\n5nAwCtM4luftCtsr1aUR5x7kjtji0p2kSncb4Vcofw3xmIU0jWDuWJ1aSiIp5Q+1\nog0WwudbVtgcojdzKfA8Tj7vXqbwcG95e2wS2E0djG6lGMzE2rGfRAqcmerl+2oT\no6no/7xKQtwkvUJFgdNdxt1YKQKBgQC69Z6FkYQpuad+DbKXfbkrNvgPDQJFpkl9\ngXB3xB32e35D9QomkB5BZn9CtZhRIZZ0teiqTzZpCnNxVgKWrm7vjV2Mf/S3PJ0N\nfTKzQqnHQCjTVHhx02BWBN7Zot7oiXVBD9lpZ9Sz1jgzbCAR/Vl2qe+daxhX7C3K\nVYD0+lihDQKBgQCc/DAQJea/M6P29feVmBWpYvWWy80LkhN2Bp5hTs8Hh5DK52jR\n9y9X+4UrAe2bNXVynKdTqAjk+Eeh5izbTP/vcLRPrY2d8iuO/ElVhr0GFfHQgbVI\nsq2WhVHoykqWVJfW9EgNbAUxWUXHvoYFQ8xwAi5p2xhanBhZXhWl/5AoUQKBgDGn\nloinE1D5rBCAltRBYfKmUM++hsH03kPlIvfMMKEMP4bRB/ciA8ce7+HJ1UCHCSzK\nO5cwHqVbTznkvB9FCNW62AO+4EHiaVvxyottwyXWVoF6R9sDZuyxsnZfGZDtISU8\njmO+XfG9jYOqzgG5Jg+sJqXKkdaYNbktaGioLO3pAoGAJy3asKaeM4uHrxNcmA3o\nyVKNnTlMhwPG2Wn1gX1t+T1gnS6ElFxnOLIqMBADBQXcitdhuycQBrARhyCE52Xx\nu7P7HBiRruZAXJPQh4ojPUPSs2moj3vXoeRcDUybxGy051CXitrnDVFEa2CQCWC/\n43BXtTlmEcbIvsMdr091Ub8=\n-----END PRIVATE KEY-----\n",
-  "client_email": "bbbserviceacc@bitberg-bot.iam.gserviceaccount.com",
-  "client_id": "105744600327329257444",
-  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-  "token_uri": "https://oauth2.googleapis.com/token",
-  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/bbbserviceacc%40bitberg-bot.iam.gserviceaccount.com"
-}
+CLOUD TOKEN CANNOT BE SHARED PUBLICALLY
