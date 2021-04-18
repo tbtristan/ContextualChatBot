@@ -24,7 +24,13 @@
 #from google.cloud import dialogflow
 #from google.cloud import language
 from google.cloud import language_v1
-#from google.cloud import texttospeech
+#from google.cloud import
+
+OVERALL_SENTIMENT = 0
+DOCUMENT_GLOBAL = ""
+DOCUMENT_COUNTER = 0
+client = language_v1.LanguageServiceClient()
+
 
 
 def sample_analyze_sentiment(text_content):
@@ -34,8 +40,6 @@ def sample_analyze_sentiment(text_content):
     Args:
       text_content The text content to analyze
     """
-
-    client = language_v1.LanguageServiceClient()
 
     # text_content = 'I am so happy and joyful.'
 
@@ -70,22 +74,68 @@ def sample_analyze_sentiment(text_content):
     # the automatically-detected language.
     print(u"Language of the text: {}".format(response.language))
 
+def analyze_sentiment(text):
+    # The text to analyze
+    # text = u"i can't believe this is happening to me"
+    document = language_v1.Document(content=text, type_=language_v1.Document.Type.PLAIN_TEXT)
+
+    # Detects the sentiment of the text
+    sentiment = client.analyze_sentiment(request={'document': document}).document_sentiment
+
+    print("Text: {}".format(text))
+    print("Sentiment: {}, {}".format(sentiment.score, sentiment.magnitude))
+
+    updateGlobalSentiment(sentiment.score)
+    updateGlobalEmotion(sentiment.score)
+    return sentiment.score
+
+def updateGlobalEmotion(sentiment_score):
+    global OVERALL_SENTIMENT
+    subdivisions = 3
+    emotion_val  = int(((OVERALL_SENTIMENT + 1)* 100)/(2*(100/subdivisions)))
+    emotion_list = {0 : 'Angry', 1 : 'Upset', 2 : 'Happy'}
+    print("Current Emotion: " + emotion_list[emotion_val])
 
 
-
+#   Average can be swayed too easily 
+def updateGlobalSentiment(sentiment_score):
+    global DOCUMENT_COUNTER, OVERALL_SENTIMENT
+    DOCUMENT_COUNTER = DOCUMENT_COUNTER + 1
+    OVERALL_SENTIMENT = (((DOCUMENT_COUNTER - 1) * OVERALL_SENTIMENT) + sentiment_score)/DOCUMENT_COUNTER
+    print("Overall Sentiment: {}".format(OVERALL_SENTIMENT))
+    
 if __name__ == '__main__':
-  text_content = "The circumplex model on the other hand, needs these data points to complete the “circle” that gives the model its name. Rubin & Talarico (2009) had participants rate emotion related stimuli on scales for valence and intensity (or arousal), and attempted to fit the circumplex and vector models on this data. Interestingly, they were unable to find high-intensity neutral words, which gives credit to the vector model over the circumplex model when dealing with textual data."
+##    print("Overall Sentiment: " + str(OVERALL_SENTIMENT))
+##    text_content = "The circumplex model on the other hand, needs these data points to complete the “circle” that gives the model its name. Rubin & Talarico (2009) had participants rate emotion related stimuli on scales for valence and intensity (or arousal), and attempted to fit the circumplex and vector models on this data. Interestingly, they were unable to find high-intensity neutral words, which gives credit to the vector model over the circumplex model when dealing with textual data."
+##
+##    text_1 = "i feel alright"
+##    text_2 = "i am "
+##
+##    sent_1 = analyze_sentiment(text_1)
+##    print("Sentiment 1: {}\n".format(sent_1))
+##    sent_2 = analyze_sentiment(text_2)
+##    print("Sentiment 2: {}\n".format(sent_2))
 
-  sample_analyze_sentiment(text_content)
+##
+##    print("Overall Sentiment: {}".format(OVERALL_SENTIMENT))
+
+    
+    
+    # sample_analyze_sentiment(text_content)
 
 
 	# hashing tweets to change appearance? 
-  import hashlib
+    import hashlib
 
 	# take a Tweet contents string as
 	# input and sha256 it. bits of 256 will be used to color and modify sprite
 	# example : 
 
-  str = "This is an example"
-  result = hashlib.sha256(str.encode())
-  print('\r',result.hexdigest())
+    str = "This is an example"
+    result = hashlib.sha256(str.encode())
+    print('\r',result.hexdigest())
+
+    user_text = input("Enter text to be analyzed: ")
+    while (user_text.lower() != ""):
+        analyze_sentiment(user_text)
+        user_text = input("Enter text to be analyzed: ")  
